@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>大屏展示</title>
-    <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=5ieMMexWmzB9jivTq6oCRX9j"></script>
+    <title>上海旅游资源实时监控</title>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=5ieMMexWmzB9jivTq6oCRX9j"></script>
 </head>
 <body>
 <div id="mapContainer"></div>
 <div class="nav-top">
-    <span class="nav-top-title">北京旅游资源实时监控</span>
+    <span class="nav-top-title">上海旅游资源实时监控</span>
     <div class="nav-top-time">
         <span id="date">2018年11月30日</span>
         <span id="time">星期五&nbsp;15:34</span>
@@ -20,12 +20,12 @@
     //初始化地图
     var map = new BMap.Map("mapContainer",{toolBarVisible:false});
     var point = new BMap.Point(116.404, 39.915);
-    map.centerAndZoom(point, 12);
+    map.centerAndZoom('上海市', 12); // 初始化地图,设置中心点坐标和地图级别
     map.loaded = function () {
         drawMap(mapData,map);
     };
     var map = new BMap.Map('mapContainer');
-    map.centerAndZoom(new BMap.Point(116.404, 40.10), 12);
+    map.centerAndZoom('上海市', 12); // 初始化地图,设置中心点坐标和地图级别
 
 
     function checkhHtml5()
@@ -118,11 +118,11 @@
     //考勤
     var kaoqin =
         '<ul>' +
-        '<li><span class="zhzb-li-name">中心</span><span class="zhzb-li-num">165<span></li>' +
-        '<li><span class="zhzb-li-name">密云</span><span class="zhzb-li-num">50</span></li>' +
-        '<li><span class="zhzb-li-name">房山</span><span class="zhzb-li-num">135</span></li>' +
-        '<li><span class="zhzb-li-name">海淀</span><span class="zhzb-li-num">450</span></li>' +
-        '<li><span class="zhzb-li-name">大兴</span><span class="zhzb-li-num">135</span></li>' +
+        '<li><span class="zhzb-li-name">中部</span><span class="zhzb-li-num">165<span></li>' +
+        '<li><span class="zhzb-li-name">北部</span><span class="zhzb-li-num">50</span></li>' +
+        '<li><span class="zhzb-li-name">南部</span><span class="zhzb-li-num">135</span></li>' +
+        '<li><span class="zhzb-li-name">东部</span><span class="zhzb-li-num">450</span></li>' +
+        '<li><span class="zhzb-li-name">西部</span><span class="zhzb-li-num">135</span></li>' +
         '</ul>';
 
     var kq = new CreateTip({
@@ -159,27 +159,27 @@
         id:"qybxspm",
         icon:"icon/区域报修数排名.png",
         title:"环境监测（污染指数）",
-        max:1300
+        max:500
     });
     qybxspm.setData([
-        {"name":"中心","data":95,"color":"#55DAED"},
-        {"name":"密云","data":90,"color":"#55B6ED"},
-        {"name":"房山","data":119,"color":"#3F80D2"},
-        {"name":"海淀","data":119,"color":"#2B5DB8"},
-        {"name":"大兴","data":132,"color":"#1864E3"}
+        {"name":"中部","data":95,"color":"#55DAED"},
+        {"name":"北部","data":90,"color":"#55B6ED"},
+        {"name":"南部","data":132,"color":"#3F80D2"},
+        {"name":"西部","data":119,"color":"#2B5DB8"},
+        {"name":"东部","data":119,"color":"#1864E3"}
     ]);
     var qywcspm = new CreateSpeed({
         id:"qywcspm",
         icon:"icon/区域完成数排名.png",
         title:"天气情况（摄氏度）",
-        max:1300
+        max:60
     });
     qywcspm.setData([
-        {"name":"中心","data":16,"color":"#55DAED"},
-        {"name":"密云","data":14,"color":"#55B6ED"},
-        {"name":"房山","data":17,"color":"#3F80D2"},
-        {"name":"海淀","data":9,"color":"#2B5DB8"},
-        {"name":"大兴","data":16,"color":"#1864E3"}
+        {"name":"中部","data":16,"color":"#55DAED"},
+        {"name":"北部","data":14,"color":"#55B6ED"},
+        {"name":"南部","data":16,"color":"#3F80D2"},
+        {"name":"东部","data":9,"color":"#2B5DB8"},
+        {"name":"西部","data":17,"color":"#1864E3"}
     ]);
     var qywclpm = new CreateSpeed({
         id:"qywclpm",
@@ -188,11 +188,11 @@
         max:null
     });
     qywclpm.setData([
-        {"name":"北京故宫博物院","data":"99.4%","color":"#55DAED"},
-        {"name":"北京颐和园","data":"98%","color":"#55B6ED"},
-        {"name":"北京八达岭长城区","data":"88%","color":"#3F80D2"},
-        {"name":"北京十三陵景区","data":"86%","color":"#2B5DB8"},
-        {"name":"北京恭王府景区","data":"70%","color":"#1864E3"}
+        {"name":"外滩","data":"99.4%","color":"#55DAED"},
+        {"name":"东方明珠","data":"98%","color":"#55B6ED"},
+        {"name":"上海迪士尼","data":"88%","color":"#3F80D2"},
+        {"name":"杜莎夫人蜡像馆","data":"86%","color":"#2B5DB8"},
+        {"name":"广富林文化遗址","data":"70%","color":"#1864E3"}
     ]);
 
     //屏幕自适应适配
